@@ -1,0 +1,22 @@
+.qudro1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.quadro1 form{
+    margin:10px;
+}
+.quadro1 form input{
+    padding: 10px;
+    border-radius: 4px;
+}
+.quadri1 form input[type=button]{
+    width: 200px;
+}
+.quadro1 form input[type=text]{
+    width: 280px;
+}
+.quadro1 form input[type=number]{
+    width: 150px;
+}

@@ -1,0 +1,60 @@
+{
+	"Connection" : {
+		"Headers" : {
+			"Content-type" : "application/json; charset=UTF-8",
+			"Access-Control-Allow-Origin" : "http://localhost/VendasArnaldo",
+			"Access-Control-Allow-Methods" : "GET, PUT, POST, DELETE"
+		}
+	},
+	"Database" : {
+		"host" : "localhost",
+		"port" : "3306",
+		"dbname" : "vendasArnaldo",
+		"user" : "root",
+		"password" : ""
+	},
+	"Class" : [
+		{
+			"name" : "produtos",
+			"attributes" : [
+				"id_Produto",
+				"nome",
+				"fabricante"
+			]
+		},
+		{
+			"name" : "compras",
+			"attributes" : [
+				"number_compra",
+				"localComprado",
+				"dataCompra"
+			]
+		},
+		{
+			"name" : "vendas",
+			"attributes" : [
+				"number_venda",
+				"nomeComprador",
+				"dataVenda"
+			]
+		},
+		{
+			"name" : "comprado",
+			"attributes" : [
+				"id_Produto",
+				"number_compra",
+				"quantidadeComprada",
+				"valorComprado"
+			]
+		},
+		{
+			"name" : "vendido",
+			"attributes" : [
+				"id_produto",
+				"number_venda",
+				"quantidadeVendida",
+				"valorVendido"
+			]
+		}
+	]
+}
