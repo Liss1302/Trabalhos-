@@ -8,17 +8,27 @@
 
 		function doGet($arr){
 			$pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
+			if($arr["id_produto"]==0){
+				$result = $pd->readAll();
+			}else{
+				$result = $pd->read($arr["id_produto"]);
+			}
 			http_response_code(200);
-			echo json_encode($sucess);
-		}
+			echo json_encode($result);
+		} //funcionando(teste com insominia)
 
 
 		function doPost($arr){
 			$pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
+			$produto = new Produtos();
+			$produto->setId_produto($arr["id_produto"]);
+			$produto->setNome($arr["nome"]);
+			$produto->setFabricante($arr["fabricante"]);
+			$sucess = $pd->create($produto);
+
 			http_response_code(200);
 			echo json_encode($sucess);
+		
 		}
 
 

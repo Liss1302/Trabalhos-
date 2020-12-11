@@ -38,42 +38,39 @@
 	class CompradoDAO {
 		function create($comprado) {
 			$result = array();
-			$query = "INSERT INTO comprados VALUES(default,'"".$comprado->getdescricao()."')";
-			try { //conecta com bd
-				$con = new Conexao();
-				if(Conexao::getInstancia()->exec($query)>= 1){
-					$resultado["descricao"] = Conexao::getInstancia()->lastInsertDescricao();
-					$resultado["quantidade"] = $comprado->getquantidade();
-					$resultado["descricao"] = $preco->getpreco();
-					if($comprado->getDescricao()!null){
-						$this->createDesc($resultado["descricao"],$comprado->getDescricao());
-					}
+
+			try {
+				$query = "INSERT INTO table_name (column1, column2) VALUES (value1, value2)";
+
+				$con = new Connection();
+
+				if(Connection::getInstance()->exec($query) >= 1){
 				}
+
 				$con = null;
 			}catch(PDOException $e) {
-				$result["erro"] = "Erro ao conectar ao BD";
+				$result["err"] = $e->getMessage();
 			}
 
-			return $resultado;
+			return $result;
 		}
 
-		function readAll() {
+		function read() {
 			$result = array();
 
 			try {
 				$query = "SELECT column1, column2 FROM table_name WHERE condition";
 
-				try{
-					$con = new Conexao();
-					$resultSet = Conexao::getInstance()->query($query);
-					while($row = $resultSet->fetchObject()){
-				}
+				$con = new Connection();
 
-			}
+				$resultSet = Connection::getInstance()->query($query);
+
+				while($row = $resultSet->fetchObject()){
+				}
 
 				$con = null;
 			}catch(PDOException $e) {
-				$result["erro"] ="Erro ao conectar com BD";
+				$result["err"] = $e->getMessage();
 			}
 
 			return $result;

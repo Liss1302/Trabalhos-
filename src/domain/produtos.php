@@ -28,45 +28,74 @@
 	}
 
 	class ProdutosDAO {
-		function create($produtos) {
+		function create($Produtos) {
 			$result = array();
+			$query = "SELECT * FROM produtos";
 
 			try {
-				$query = "INSERT INTO table_name (column1, column2) VALUES (value1, value2)";
-
 				$con = new Connection();
-
-				if(Connection::getInstance()->exec($query) >= 1){
+				$result = array();
+				$id_produto = $produto->getId_Produto();
+				$nome = $produto->getNome();
+				$fabricante = $produto->getFabricante();
+				$query = "INSERT INTO Produto VALUES ($id_Produto,'$nome','$fabricante')";
+				if(Connection::getInstance()->exec($query)>= 1){
+					$result["mensagem"] = "Produto criado com sucesso!";
+				}else{
+					$result["erro"] = "Produto já existe";
 				}
-
-				$con = null;
 			}catch(PDOException $e) {
-				$result["err"] = $e->getMessage();
+				$result["erro"] = "Erro de conexao com o Bd";
 			}
-
 			return $result;
 		}
 
-		function read() {
+		function readAll() {  //funcionando
 			$result = array();
+				$query = "SELECT * FROM produtos";
 
-			try {
-				$query = "SELECT column1, column2 FROM table_name WHERE condition";
-
+				try {
 				$con = new Connection();
 
 				$resultSet = Connection::getInstance()->query($query);
 
 				while($row = $resultSet->fetchObject()){
+					$produto = new Produtos();
+					$produto->setId_Produto($row->id_produto);
+					$produto->setNome($row->nome);
+					$produto->setFabricante($row->fabricante);
+					$result [] = $produto;
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
-				$result["err"] = $e->getMessage();
+				$result["err"] = "Erro de conexao com BD";
 			}
-
 			return $result;
 		}
+
+		function read($id_produto) { //read e headAll funcionando
+			$result = array();
+				$query = "SELECT * FROM produtos WHERE id_produto = $id_produto";
+
+				try {
+				$con = new Connection();
+
+				$resultSet = Connection::getInstance()->query($query);
+
+				while($row = $resultSet->fetchObject()){
+					$produto = new Produtos();
+					$produto->setId_Produto($row->id_produto);
+					$produto->setNome($row->nome);
+					$produto->setFabricante($row->fabricante);
+					$result [] = $produto;
+				}
+				$con = null;
+			}catch(PDOException $e) {
+				$result["err"] = "Erro de conexao com BD";
+			}
+			return $result;
+		}
+
 
 		function update() {
 			$result = array();
