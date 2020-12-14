@@ -6,23 +6,31 @@
 	class ComprasProcess {
 		var $cd;
 
-		function doGet($arr){
+		function doGet($arr){  //head & headAll
 			$cd = new ComprasDAO();
-			$sucess = "use to result to DAO";
+			if($arr["number_compra"]==0){
+				$result = $cd->readAll();
+			}else{
+				$result = $cd->read($arr["number_compra"]);
+			}
+			http_response_code(200);
+			echo json_encode($result);
+		}
+
+		function doPost($arr){ //create
+			$cd = new ComprasDAO();
+			$compra = new Compras();
+			$compra->setNumber_compra($arr["number_compra"]);
+			$compra->setLocalComprado($arr["localcomprado"]);
+			$compra->setDataCompra($arr["datacompra"]);
+			$sucess = $cd->create($compra);
+
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
 
 
-		function doPost($arr){
-			$cd = new ComprasDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
-		}
-
-
-		function doPut($arr){
+		function doPut($arr){  //UPDATE
 			$cd = new ComprasDAO();
 			$sucess = "use to result to DAO";
 			http_response_code(200);

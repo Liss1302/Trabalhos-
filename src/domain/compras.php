@@ -32,37 +32,66 @@
 			$result = array();
 
 			try {
-				$query = "INSERT INTO table_name (column1, column2) VALUES (value1, value2)";
+				$con = new Connection();
+				$query = "INSERT INTO Compras VALUES (default, '".$localComprado->getlocalComprado()."', '".$DataCompra->getDataCompra()."')";
+				if(Connection::getInstance()->exec($query) >= 1){
+					$result["mensagem"] = "Compra criada com sucesso!";
+				}else{
+					$result["erro"] = "Erro ao cadastrar compra";
+				}
+			}catch(PDOException $e) {
+				$result["erro"] = "Erro de conexao com BD";
+			}
+			return $result;
+		}
 
+		function readAll() {
+			$result = array();
+			$query = "SELECT * FROM compras";
+
+			try {
 				$con = new Connection();
 
-				if(Connection::getInstance()->exec($query) >= 1){
+				$resultSet = Connection::getInstance()->query($query);
+
+				while($row = $resultSet->fetchObject()){
+					$compra = new Compras();
+					$compra->setNumber_compra($row->number_compra);
+					$compra->setlocalComprado($row->localcomprado);
+					$compra->setDataCompra($row->datacompra);
+					$result[] = $compra;
 				}
 
 				$con = null;
 			}catch(PDOException $e) {
-				$result["err"] = $e->getMessage();
+				$result["err"] = "Erro de conexao com BD";
 			}
 
 			return $result;
 		}
 
-		function read() {
+		function read($Number_compra) {
 			$result = array();
+			$query = "SELECT * FROM compras WHERE number_compra = $Number_compra";
+
 
 			try {
-				$query = "SELECT column1, column2 FROM table_name WHERE condition";
 
 				$con = new Connection();
 
 				$resultSet = Connection::getInstance()->query($query);
 
 				while($row = $resultSet->fetchObject()){
+					$compra = new Compras();
+					$compra->setNumber_compra($row->number_compra);
+					$compra->setLocalComprado($row->localcomprado);
+					$compra->setDataCompra($row->datacompra);
+					$result[] = $compra;
 				}
 
 				$con = null;
 			}catch(PDOException $e) {
-				$result["err"] = $e->getMessage();
+				$result["err"] = "Erro de conexao com BD";
 			}
 
 			return $result;

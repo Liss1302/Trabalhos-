@@ -4,7 +4,7 @@
 		public static $instance;
 
 		public static function getInstance(){
-			$url = "mysql:host=localhost;port=3306;dbname=vendasArnaldo;";
+			$url = "mysql:host=localhost;port=3306;dbname=vendasArnaldo;charset=utf8";
 
 			$user = "root";
 
