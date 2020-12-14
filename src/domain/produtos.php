@@ -30,19 +30,14 @@
 	class ProdutosDAO {
 		function create($Produtos) {
 			$result = array();
-			$query = "SELECT * FROM produtos";
 
 			try {
 				$con = new Connection();
-				$result = array();
-				$id_produto = $produto->getId_Produto();
-				$nome = $produto->getNome();
-				$fabricante = $produto->getFabricante();
-				$query = "INSERT INTO Produto VALUES ($id_Produto,'$nome','$fabricante')";
+				$query = "INSERT INTO Produtos VALUES (default,'".$Produtos->getNome()."','".$Produtos->getFabricante()."')";
 				if(Connection::getInstance()->exec($query)>= 1){
 					$result["mensagem"] = "Produto criado com sucesso!";
 				}else{
-					$result["erro"] = "Produto já existe";
+					$result["erro"] = "Erro ao cadastrar produto";
 				}
 			}catch(PDOException $e) {
 				$result["erro"] = "Erro de conexao com o Bd";
@@ -97,17 +92,24 @@
 		}
 
 
-		function update() {
+		function update($prod) {
 			$result = array();
+			$id_produto = $prod->getId_Produto();
+			$nome = $prod->getNome();
+			$fabricante = $prod->getFabricante();
 
 			try {
-				$query = "UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition";
+				$query = "UPDATE Produtos SET nome = '$nome', fabricante = '$fabricante' WHERE id_Produto=$id_produto";
 
 				$con = new Connection();
 
 				$status = Connection::getInstance()->prepare($query);
 
 				if($status->execute()){
+					$result = $prod;
+				}else{
+					$result["err"] = "Erro ao atualizar esse produto";
+
 				}
 
 				$con = null;
@@ -118,15 +120,19 @@
 			return $result;
 		}
 
-		function delete() {
+		function delete($id_Produto) {
 			$result = array();
 
 			try {
-				$query = "DELETE FROM table_name WHERE condition";
+				$query = "DELETE FROM Produtos WHERE id_Produto = $id_Produto";
 
 				$con = new Connection();
 
 				if(Connection::getInstance()->exec($query) >= 1){
+					$result["msg"] = "Produto deletado com sucesso";
+				}else{
+					$result["err"] = "Erro ao excluir esse produto";
+
 				}
 
 				$con = null;

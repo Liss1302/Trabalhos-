@@ -34,7 +34,11 @@
 
 		function doPut($arr){
 			$pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
+			$produto = new Produtos;
+			$produto->setId_produto($arr["id_Produto"]);
+			$produto->setNome($arr["nome"]);
+			$produto->setFabricante($arr["fabricante"]);
+			$sucess = $pd->update($produto);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
@@ -42,7 +46,7 @@
 
 		function doDelete($arr){
 			$pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
+			$sucess = $pd->delete($arr["id_Produto"]);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
