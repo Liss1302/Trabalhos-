@@ -32,7 +32,11 @@
 
 		function doPut($arr){  //UPDATE
 			$cd = new ComprasDAO();
-			$sucess = "use to result to DAO";
+			$compra = new Compras();
+			$compra->setNumber_compra($arr["number_compra"]);
+			$compra->setlocalComprado($arr["localcomprado"]);
+			$compra->setDataCompra($arr["datacompra"]);
+			$sucess = $cd->update($compra);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
@@ -40,7 +44,7 @@
 
 		function doDelete($arr){
 			$cd = new ComprasDAO();
-			$sucess = "use to result to DAO";
+			$sucess = $cd->delete($arr["number_compra"]);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}

@@ -76,7 +76,6 @@
 
 
 			try {
-
 				$con = new Connection();
 
 				$resultSet = Connection::getInstance()->query($query);
@@ -97,17 +96,23 @@
 			return $result;
 		}
 
-		function update() {
+		function update($comp) {
 			$result = array();
+			$number_compra = $comp->getNumber_compra();
+			$localComprado = $comp->getlocalComprado();
+			$dataCompra = $comp->getDataCompra();
 
 			try {
-				$query = "UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition";
+				$query = "UPDATE Compras SET localcomprado = '$localComprado', datacompra = '$datahora' WHERE number_compra=$Number_compra";
 
 				$con = new Connection();
 
 				$status = Connection::getInstance()->prepare($query);
 
 				if($status->execute()){
+					$result = $comp;
+				}else{
+					$result["erro"] = "Erro ao atualizar essa compra";
 				}
 
 				$con = null;
@@ -118,15 +123,18 @@
 			return $result;
 		}
 
-		function delete() {
+		function delete($Number_compra) {
 			$result = array();
 
 			try {
-				$query = "DELETE FROM table_name WHERE condition";
+				$query = "DELETE FROM Compras WHERE number_compra = $Number_compra";
 
 				$con = new Connection();
 
 				if(Connection::getInstance()->exec($query) >= 1){
+					$result["msg"] = "Compra deletada com sucesso";
+				}else{
+					$result["erro"] = "Erro ao excluir esse produto";
 				}
 
 				$con = null;
