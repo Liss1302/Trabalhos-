@@ -34,8 +34,8 @@
 			$cd = new ComprasDAO();
 			$compra = new Compras();
 			$compra->setNumber_compra($arr["number_compra"]);
-			$compra->setlocalComprado($arr["localcomprado"]);
-			$compra->setDataCompra($arr["datacompra"]);
+			$compra->setLocalComprado($arr["localcomprado"]);
+			$compra->setDataCompra($arr["dataCompra"]);
 			$sucess = $cd->update($compra);
 			http_response_code(200);
 			echo json_encode($sucess);

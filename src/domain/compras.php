@@ -99,11 +99,11 @@
 		function update($comp) {
 			$result = array();
 			$number_compra = $comp->getNumber_compra();
-			$localComprado = $comp->getlocalComprado();
+			$localComprado = $comp->getLocalComprado();
 			$dataCompra = $comp->getDataCompra();
 
 			try {
-				$query = "UPDATE Compras SET localcomprado = '$localComprado', datacompra = '$datahora' WHERE number_compra=$Number_compra";
+				$query = "UPDATE Compras SET localcomprado = '$LocalComprado', datacompra = '$DataCompra' WHERE number_compra=$Number_compra";
 
 				$con = new Connection();
 
