@@ -28,12 +28,12 @@
 	}
 
 	class ComprasDAO {
-		function create($compras) {
+		function create($Compras) {
 			$result = array();
 
 			try {
 				$con = new Connection();
-				$query = "INSERT INTO Compras VALUES (default, '".$localComprado->getlocalComprado()."', '".$DataCompra->getDataCompra()."')";
+				$query = "INSERT INTO Compras VALUES (default,'".$Compras->getlocalComprado()."','".$Compras->getDataCompra()."')";
 				if(Connection::getInstance()->exec($query) >= 1){
 					$result["mensagem"] = "Compra criada com sucesso!";
 				}else{

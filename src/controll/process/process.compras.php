@@ -21,7 +21,7 @@
 			$cd = new ComprasDAO();
 			$compra = new Compras();
 			$compra->setNumber_compra($arr["number_compra"]);
-			$compra->setLocalComprado($arr["localcomprado"]);
+			$compra->getLocalComprado($arr["localComprado"]);
 			$compra->setDataCompra($arr["datacompra"]);
 			$sucess = $cd->create($compra);
 
@@ -44,7 +44,7 @@
 
 		function doDelete($arr){
 			$cd = new ComprasDAO();
-			$sucess = $cd->delete($arr["number_compra"]);
+			$sucess = $cd->delete($arr["Number_compra"]);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
