@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 	class Produtos {
 		var $id_Produto;
