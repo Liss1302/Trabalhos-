@@ -1,22 +1,95 @@
-.qudro1{
+body{
+    background-image: C:\xampp\htdocs\Trabalhos-\imgs\image3.jpg;
+}
+.form1{
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: row;
 }
-.quadro1 form{
+.form1 form{
     margin:10px;
 }
-.quadro1 form input{
+.form1 form input{
     padding: 10px;
     border-radius: 4px;
 }
-.quadri1 form input[type=button]{
+.form1 form input[type=button]{
     width: 200px;
 }
-.quadro1 form input[type=text]{
+.form1 form input[type=text]{
     width: 280px;
 }
-.quadro1 form input[type=number]{
+.form1 form input[type=number]{
     width: 150px;
+}
+.tableResult{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.tableResult th{
+    border: 0px #ccc;
+    border-radius: 1px;
+    padding:10px;
+    margin: 10px;
+    width: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    background-color: #eee;
+}
+.tableResult td{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:10px;
+    margin: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: right;
+}
+.tableResult td input{
+    padding:5px;
+    width: 50%;
+    border-radius: 5px;
+}
+.formFiscal h3{
+ align-items: center;
+ border: 1 px solid;
+}
+.formFiscal th{
+    border: 0px #ccc;
+    border-radius: 1px;
+    padding:10px;
+    margin: 10px;
+    width: 1000px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    background-color: #eee;
+}
+.Total th{
+    border: 0px #ccc;
+    border-radius: 1px;
+    padding:10px;
+    margin: 10px;
+    width: 1000px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    background-color: #eee;
+}
+.Total td input{
+    padding:5px;
+    width: 50%;
+    border-radius: 5px;
+}
+.Total{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:10px;
+    margin: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: right;
 }

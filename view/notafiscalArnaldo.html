@@ -5,33 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estiloFiscal.css" />
-    <title>Perfil</title>
+    <title>Vendas Arnaldo</title>
 </head>
-
-<body onload="Perfil()">
-    <div class="quadro1">
-        <table>
+    <body onload="recarga()"  backgroun="">
+        <div class="form1">
+            <form>
+                <input type="text" placeholder="descricao" id="descricao"/>
+                <input type="number" placeholder="quantidade" id="quantidade"/>
+                <input type="number" placeholder="preco" id="preco"/>
+                <input class="button" type="button" value="Adicionar" id="botao"/>
+            </form>
+        </div>
+        <div class="formFiscal">
+                <table>
+                    <thead>
+                        <h3>NOTA FISCAl</h3>
+                        <th>Dados da empresa</th>
+                        <th>Dados do destinatário</th>
+                        <th>Data e local</th>
+                        <th>Dados dos produtos</th>
+                        <th>Botoes de acao</th>
+                    </thead>
+        <div class="tableResult">
+                <table>
+                    <thead>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Subtotal</th>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        <div class="Total">
             <thead>
-                <tr>
-                    <h2>Vendas Arnaldo </h2>
-                </tr>
+                <th>Total da Nota</th>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Descricao: <input type="text" id="descriao" size="descricao" /></td>
-                </tr>
-                <tr>
-                    <td>Quantidade: <input type="number" id="quantidade" size="quantidade" /></td>
-                </tr>
-                 <tr>
-                    <td>Preco: <input type="number" id="preco" size="preco" /></td>
-                </tr>
-                <tr>
-                    <td><input type="button" value="adicionar" onclick="add" /></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        </div>
     <script src="front.js"></script>
 </body>
 
