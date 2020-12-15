@@ -21,7 +21,7 @@
 			$cd = new ComprasDAO();
 			$compra = new Compras();
 			$compra->setNumber_compra($arr["number_compra"]);
-			$compra->getLocalComprado($arr["localComprado"]);
+			$compra->setLocalComprado($arr["localComprado"]);
 			$compra->setDataCompra($arr["datacompra"]);
 			$sucess = $cd->create($compra);
 
