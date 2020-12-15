@@ -8,22 +8,22 @@
 
 		function doGet($arr){
 			$vd = new VendasDAO();
-			if($arr["number_compra"]==0){
+			if($arr["number_venda"]==0){
 				$result = $vd->readAll();
 			}else{
-				$result = $vd->read($arr["number_compra"]);
+				$result = $vd->read($arr["number_venda"]);
 			}
 			http_response_code(200);
-			echo json_encode($sucess);
+			echo json_encode($result);
 		}
 
 
 		function doPost($arr){
 			$vd = new VendasDAO();
-			venda = new Vendas();
-			$venda->setNumber_compra($arr["number_compra"]);
-			$venda->setNomeComprador($arr["nomecomprador"]);
-			$venda->setDataCompra($arr["datacompra"]);
+			$venda = new Vendas();
+			$venda->setNumber_venda($arr["number_venda"]);
+			$venda->setNomeComprador($arr["nomeComprador"]);
+			$venda->setDataVenda($arr["dataVenda"]);
 			$sucess = $vd->create($venda);
 		
 			http_response_code(200);
@@ -33,9 +33,9 @@
 
 		function doPut($arr){
 			$vd = new VendasDAO();
-			$venda->setNumber_compra($arr["numbervenda"]);
-			$venda->setNomeComprador($arr["nomecomprador"]);
-			$venda->setDataCompra($arr["datacompra"]);
+			$venda->setNumber_venda($arr["number_venda"]);
+			$venda->setNomeComprador($arr["nomeComprador"]);
+			$venda->setDataVenda($arr["dataVenda"]);
 			$sucess = $vd->update($venda);
 			http_response_code(200);
 			echo json_encode($sucess);
@@ -44,7 +44,7 @@
 
 		function doDelete($arr){
 			$vd = new VendasDAO();
-			$sucess = $vd->delete($arr["number_compra"]);
+			$sucess = $vd->delete($arr["number_venda"]);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}

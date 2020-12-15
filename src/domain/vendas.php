@@ -45,13 +45,11 @@
 			return $result;
 		}
 
-		function read() {
+		function readAll() {
 			$result = array();
-			$query = "SELECT * FROM Vendas";
-
+			$query = "SELECT * FROM vendas";
 
 			try {
-
 				$con = new Connection();
 
 				$resultSet = Connection::getInstance()->query($query);
@@ -59,8 +57,8 @@
 				while($row = $resultSet->fetchObject()){
 					$venda = new Vendas();
 					$venda->setNumber_venda($row->number_venda);
-					$venda->setNomeComprador($row->nomeComprador);
-					$venda->setDataVenda($row->dataVenda);
+					$venda->setNomeComprador($row->nomecomprador);
+					$venda->setDataVenda($row->datavenda);
 					$result [] = $venda;
 				}
 				$con = null;
@@ -70,13 +68,11 @@
 			return $result;
 		}
 
-		function read(number_venda) {
+		function read($number_venda) {
 			$result = array();
-			$query = "SELECT * FROM vendas WHERE number_vendas = $number_venda";
-
 
 			try {
-
+				$query = "SELECT * FROM vendas WHERE number_vendas = $number_venda";
 				$con = new Connection();
 
 				$resultSet = Connection::getInstance()->query($query);
@@ -84,8 +80,8 @@
 				while($row = $resultSet->fetchObject()){
 					$venda = new Vendas();
 					$venda->setNumber_venda($row->number_venda);
-					$venda->setNomeComprador($row->nomeComprador);
-					$venda->setDataVenda($row->dataVenda);
+					$venda->setNomeComprador($row->nomecomprador);
+					$venda->setDataVenda($row->datavenda);
 					$result [] = $venda;
 				}
 				$con = null;
@@ -133,7 +129,7 @@
 				if(Connection::getInstance()->exec($query) >= 1){
 					$result["msg"] = "Venda deletada com sucesso";
 				}else{
-					]$result["erro"] = "Erro ao excluir essa venda";
+					$result["erro"] = "Erro ao excluir essa venda";
 				}
 
 				$con = null;
