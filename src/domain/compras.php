@@ -44,7 +44,6 @@
 			}
 			return $result;
 		}
-
 		function readAll() {
 			$result = array();
 			$query = "SELECT * FROM compras";
@@ -96,7 +95,7 @@
 			return $result;
 		}
 
-		function update($comp) {
+		function update($comp) { //esta dando erro ao atualizar
 			$result = array();
 			$number_compra = $comp->getNumber_compra();
 			$localComprado = $comp->getLocalComprado();
@@ -127,7 +126,7 @@
 			$result = array();
 
 			try {
-				$query = "DELETE FROM Compras WHERE number_compra = $Number_compra";
+				$query = "DELETE FROM Compras WHERE Number_compra = $Number_compra";
 
 				$con = new Connection();
 

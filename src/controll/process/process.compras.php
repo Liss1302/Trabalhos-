@@ -44,7 +44,7 @@
 
 		function doDelete($arr){
 			$cd = new ComprasDAO();
-			$sucess = $cd->delete($arr["Number_compra"]);
+			$sucess = $cd->delete($arr["Number_Compra"]);
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
